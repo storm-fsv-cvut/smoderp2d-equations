@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\usepackage[cp1250]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[czech]{babel}
 
 \usepackage[left=10mm,right=10mm,top=10mm,bottom=10mm]
@@ -13,7 +13,16 @@
 \usepackage{amsmath}
 
 \begin{document}
+\section*{povrchový odtok}
 
+\begin{itemize}
+\item h - výška hladiny [m]
+\item o - odtok / přítok [m/s]
+\item inf - infiltrace [m/s]
+\item es - efektivní srážka [m/s]
+\item T - čas [s]
+\item a, b - parameter odtoku
+\end{itemize}
 
 $$
   \frac{h_{i,t} - h_{i,t-1} }{\Delta T} =  \left(es_{i,t} + \sum_j^m o^{in}_{j,t} - inf_{i,t} - o^{out}_{i,t}\right)
