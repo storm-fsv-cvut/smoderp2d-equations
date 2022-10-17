@@ -1,0 +1,208 @@
+\documentclass{article}
+
+\usepackage[cp1250]{inputenc}
+\usepackage[czech]{babel}
+
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage[left=10mm,right=10mm,top=10mm,bottom=10mm]
+  {geometry}
+\usepackage{pdflscape}
+\thispagestyle{empty}
+
+\begin{document}
+
+
+\begin{tabular}{ll}
+  $ES$ & efektivní srážka \\
+  $X$  & plocha buòky     \\
+  $Exf$  & exfiltrace   \\
+  $Inf$  & infiltrace   \\
+  $Per$  & propad spodem  \\
+\end{tabular}
+
+
+
+
+
+
+
+\section*{Povrchový odtok}
+
+  {\renewcommand{\arraystretch}{3.0} 
+  \begin{tabular}{rc}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  tokovì:
+  &
+  $
+    \frac{V_{i,t}-V_{i,t-1}}{\triangle t} = 
+  %   
+    ES_{i,t-1}X + Exf_{i,t-1}X + \sum_{j}^{inflows}Q^{in}_{j,t-1} - Q^{out}_{i,t-1} - Inf_{i.t-1}X
+  %  
+  $
+
+  \\
+  & 
+  $\cdot \triangle t + V_{i,t-1}$
+
+  \\
+  
+  
+  
+  
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  obìmovnì:
+  &
+  $
+    V_{i,t} = V_{i,t-1} +
+  %   
+    es_{i,t-1}X + exf_{i,t-1} + \sum_{j}^{inflows}V^{in}_{j,t-1} - V^{out}_{i,t-1} - inf_{i.t-1}X
+  %  
+  $
+
+  \\
+  &
+  $\cdot \frac{1}{X}$
+
+  \\
+  
+  
+  
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  výškovì:
+  &
+  $
+    H_{i,t} = H_{i,t-1} +
+  %   
+    es_{i,t-1}  + exf_{i,t-1} + \sum_{j}^{inflows}H^{in}_{j,t-1} - H^{out}_{i,t-1} - inf_{i.t-1}
+  %  
+  $
+
+  \\
+  &
+  $
+  q = aH^b; \quad a = xI^y; \quad A=\frac{a}{100N}; \quad
+  H^{in,out}_{i,t-1} = A \frac{6\triangle t q_{i,t-1}}{L_i}                                                                        
+  $
+
+  \\
+  
+  
+  
+  
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+
+  &
+  $
+    H_{i,t} = H_{i,t-1} +
+  %   
+    es_{i,t-1} + exf_{i,t-1}  +  \sum_{j}^{inflows} \frac{A6\triangle t}{L_j} q_{j,t-1}^{in} - \frac{A6\triangle t}{L_i}q_{i,t-1}^{out} - inf_{i.t-1}
+  %  
+  $
+
+  \\  
+  
+  &
+  $
+  \boxed{
+    H_{i,t} = H_{i,t-1} +
+  %   
+    es_{i,t-1}  + exf_{i,t-1} +  \sum_{j}^{inflows} \frac{A6\triangle t}{L_j} a_jH_{j,t-1}^{b_j} - \frac{A6\triangle t}{L_i}a_iH_{i,t-1}^{b_i} - inf_{i.t-1}
+  %  
+  }
+  $
+  \\  
+  
+  \end{tabular}
+  }
+
+  
+  
+  
+\section*{Povrchový odtok}
+  {\renewcommand{\arraystretch}{3.0} 
+  \begin{tabular}{rc}
+  intenzitnì ($L/t$):
+  &
+  $
+    \frac{H_{i,t}-H_{i,t-1}}{\triangle t} = 
+    %
+    Inf_{i,t-1} + \sum_{j}^{inflows} q^{in}_{j,t-1} - q^{out}_{j,t-1} - Per_{i,t-1} - Exf_{i,t-1}
+  $
+
+  
+  \\
+  
+  &
+   $\cdot \triangle t + V_{i,t-1}$
+
+  
+  \\
+  
+  výškovì:
+  &
+  $
+    H_{i,t} = H_{i,t-1} +
+    %
+    inf_{i,t-1} + \triangle t \sum_{j}^{inflows} q^{in}_{j,t-1} - \triangle t q^{out}_{j,t-1} - per_{i,t-1} - exf_{i,t-1} 
+  $
+
+  
+  
+   
+
+  \\
+  
+  &
+  $q = k_s \alpha; \quad  \alpha = sklon(H+z) $
+  
+  \\
+  
+  
+  
+  &
+  $
+  \boxed{
+    H_{i,t} = H_{i,t-1} +
+    %
+    inf_{i,t-1} + \triangle t \sum_{j}^{inflows} k_s\alpha_{j,t-1} - \triangle t k_s\alpha_{i,t-1} - per_{i,t-1} - exf_{i,t-1} 
+    }
+  $
+  
+  
+  
+  
+  \end{tabular}
+  }
+  
+
+  
+\newpage
+\subsection*{další}
+  
+  $$
+  exf_{i,t-1} = max(0, H_{i,t-1} + inf_{i,t-1} + \triangle t \sum_{j}^{inflows} q^{in}_{j,t-1} - \triangle t q^{out}_{j,t-1} - per_{i,t-1} - L_{puda}),
+  $$
+  
+  kde $L_{puda}$ je hloubka pùdního profilu.
+  
+  $$
+  per_{i,t-1} =
+  \begin{cases}
+     0         & \quad \text{if } H_{i,t-1} = 0\\
+    K_{s,sub}  & \quad \text{if } H_{i,t-1} > 0\\
+  \end{cases}
+  $$
+  
+  
+  
+  
+  
+  
+  
+  
+  
+\end{document}

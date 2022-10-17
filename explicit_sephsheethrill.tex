@@ -1,0 +1,44 @@
+\documentclass{article}
+
+\usepackage[cp1250]{inputenc}
+\usepackage[czech]{babel}
+
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage[left=10mm,right=10mm,top=10mm,bottom=10mm]
+  {geometry}
+\usepackage{pdflscape}
+\thispagestyle{empty}
+
+\begin{document}
+
+
+
+
+
+
+\section*{Povrchový odtok}
+  $$
+    \frac{h^{sheet}_{i,t} - h^{sheet}_{i,t-1}}{\Delta t} = es_{i,t-1} + \sum_{j}^{m}q(h^{sheet}_{j,t-1}) + \sum_{j}^{m}q(h^{rill}_{j,t-1}) - q(h^{sheet}_{i,t-1}) - inf_{i,t-1}
+  $$
+  
+  $$ h^{sheet\_to\_rill}_{i,t} = MAX(0, h^{sheet}_{i,t} - h^{crit}_{i,t})$$
+  
+  $$\Delta t_{rill} = \Delta t/n$$
+  $$
+    \frac{h^{rill}_{i,t} - h^{rill}_{i,t-1}}{\Delta t_{rill}}   = h^{sheet\_to\_rill}_{i,t}/\Delta t - q(h^{rill}_{i,t-1}) 
+  $$
+  
+  
+  
+  
+  
+%   $
+%     h_{i,t} = h_{i,t-1} +
+%   %   
+%     es_{i,t-1}  + exf_{i,t-1} + \sum_{j}^{m}h^{in}_{j,t-1} - h^{out}_{i,t-1} - inf_{i.t-1}
+%   %  
+%   $
+ 
+  
+\end{document}

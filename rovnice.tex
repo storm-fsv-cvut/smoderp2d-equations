@@ -1,0 +1,172 @@
+\documentclass{article}
+
+\usepackage[cp1250]{inputenc}
+\usepackage[czech]{babel}
+
+\usepackage[left=10mm,right=10mm,top=10mm,bottom=10mm]
+  {geometry}
+\usepackage{pdflscape}
+\thispagestyle{empty}
+
+\begin{document}
+
+\begin{landscape}
+
+ 
+
+\begin{tabular}{c|c}
+ explicitní  &  implicitní \\
+ $\frac{h_{t} - h_{t-1}}{\triangle t} = f(h_{t-1},t-1)$ &  $\frac{h_{t} - h_{t-1}}{\triangle t} = f(h_{t},t)$
+\end{tabular}\\[3ex]
+
+
+
+Generická buòka $i$ v èase $t$.\\[3ex]
+
+
+\begin{tabular}{r|cc}
+& explicitnì  &  implicitnì \\
+% % % % % % % % % % % % % % % % % % % % % 
+$L^3.t^{-1}$
+&
+$
+  \frac{V_{i,t}-V_{i,t-1}}{\triangle t} = 
+%   
+  ES_{i,t}X + \sum_{j}^{inflows}Q^{in}_{j,t-1} - Q^{out}_{i,t-1} - Inf_{i.t}X
+%   
+$
+&
+$
+  \frac{V_{i,t}-V_{i,t-1}}{\triangle t} = 
+%   
+  ES_{i,t}X + \sum_{j}^{inflows}Q^{in}_{j,t-1} - Q^{out}_{i,t-1} - Inf_{i.t}X
+%
+$
+
+\\
+\\
+
+% % % % % % % % % % % % % % % % % % % % % % 
+$L^3$
+&
+$
+  V_{i,t} = 
+%   
+  V_{i,t-1} + \triangle t \left( ES_{i,t}X + \sum_{j}^{inflows}Q^{in}_{j,t-1} - Q^{out}_{i,t-1} - Inf_{i.t}X \right)
+%   
+$
+&
+$
+  V_{i,t} + \triangle t \left( ES_{i,t}X + \sum_{j}^{inflows}Q^{in}_{j,t} - Q^{out}_{i,t} - Inf_{i.t}X \right) = 
+%   
+  V_{i,t-1} 
+%   
+$
+
+
+\\
+\\
+
+
+% % % % % % % % % % % % % % % % % % % % % % 
+($\cdot 1/X$) $L$ 
+&
+$
+  H_{i,t} = 
+%   
+  H_{i,t-1} + \triangle t \left( ES_{i,t} + \sum_{j}^{inflows}O^{in}_{j,t-1} - O^{out}_{i,t-1} - Inf_{i,t} \right)
+%   
+$
+&
+$
+  H_{i,t} + \triangle t \left( ES_{i,t} + \sum_{j}^{inflows}O^{in}_{j,t} - O^{out}_{i,t} - Inf_{i.t} \right) = 
+%   
+  H_{i,t-1} 
+%   
+$
+\\
+\\
+
+% % % % % % % % % % % % % % % % % % % % % % 
+&
+$
+  q = aH^b; \quad a = xI^y; \quad; A=\frac{a}{100N}; \quad
+  O_{i,t} = A \frac{6\triangle t q_{i,t}}{L_i}
+$
+&
+\\
+\\
+
+
+% % % % % % % % % % % % % % % % % % % % % % 
+&
+$
+  H_{i,t} = 
+%   
+  H_{i,t-1} + \triangle t \left( ES_{i,t} 
+                               + \frac{A6\triangle t}{L_i}\sum_{j}^{inflows}q_{j,t-1} - q_{i,t-1}
+                               - Inf_{i,t} \right)
+%   
+$
+&
+\\
+\\
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % 
+&
+$
+  H_{i,t} = 
+%   
+  H_{i,t-1} + \triangle t \left( ES_{i,t} 
+                               + \frac{A6\triangle t}{L_i}\sum_{j}^{inflows}a_iH_{i,t-1}^{b_i} - a_iH_{i,t-1}^{b_i}
+                               - Inf_{i,t} \right)
+%   
+$
+&
+$
+  H_{i,t} - \triangle t a_iH_{i,t}^{b_i}  + \triangle t \left(\sum_{j}^{inflows}a_jH_{j,t}^{b_j}  \right) = 
+%   
+  H_{i,t-1} - \triangle t ES_{i,t}  + \triangle t  Inf_{i.t}
+%   
+$
+\\
+\\
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % 
+&
+% 
+&
+$
+  H_{i,t} - \triangle t a_iH_{i,t}^{b_i-1}H_{i,t}^{1}  + \triangle t \left(\sum_{j}^{inflows}a_jH_{j,t}^{b_j-1}H_{j,t}^{1}  \right) = 
+%   
+  H_{i,t-1} - \triangle t ES_{i,t}  + \triangle t Inf_{i,t}
+%   
+$
+\\
+\\
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % 
+&
+% 
+&
+$
+  (1 - \triangle t a_iH_{i,t}^{b_i-1})H_{i,t}  + \triangle t \left(\sum_{j}^{inflows}a_jH_{j,t}^{b_j-1}H_{j,t}  \right) = 
+%   
+  H_{i,t-1} - \triangle t ES_{i,t}  + \triangle t Inf_{i,t}
+%   
+$
+\\
+
+\end{tabular}\\[3ex]
+
+
+
+
+\end{landscape}
+\end{document}

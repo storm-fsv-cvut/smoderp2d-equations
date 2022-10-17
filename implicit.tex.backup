@@ -1,0 +1,204 @@
+\documentclass{article}
+
+\usepackage[cp1250]{inputenc}
+\usepackage[czech]{babel}
+
+\usepackage[left=10mm,right=10mm,top=10mm,bottom=10mm]
+  {geometry}
+\usepackage{pdflscape}
+\thispagestyle{empty}
+
+% \usepackage{breqn}
+
+\usepackage{amsmath}
+
+\begin{document}
+
+
+$$
+  \frac{h_{i,t} - h_{i,t-1} }{\Delta T} =  \left(es_{i,t} + \sum_j^m o^{in}_{j,t} - inf_{i,t} - o^{out}_{i,t}\right)
+$$
+
+
+$$
+  \frac{h_{i,t} - h_{i,t-1} }{\Delta T} =  \left(es_{i,t} + \sum_j^m a_jh^{b_{j}}_{j,t} - inf_{i,t} - a_ih^{b_{i}}_{i,t}\right)
+$$
+
+
+
+
+
+$$
+  h_{i,t} - \Delta T es_{i,t} - \Delta T \sum_j^m a_jh^{b_{j}}_{j,t} + \Delta T inf_{i,t} + \Delta T a_ih^{b_{i}}_{i,t} = h_{i,t-1} 
+$$
+
+
+$$
+  h_{i,t} - \Delta T \sum_j^m a_jh^{b_{j}}_{j,t} + \Delta T a_ih^{b_{i}}_{i,t} = h_{i,t-1} + \Delta T es_{i,t} - \Delta T inf_{i,t}
+$$
+
+
+
+$$
+  h_{i,t} + \Delta T a_ih^{b_{i}}_{i,t} - \Delta T \sum_j^m a_jh^{b_{j}}_{j,t}  = h_{i,t-1} + \Delta T es_{i,t} - \Delta T inf_{i,t}
+$$
+
+$$
+  h_{i,t} + \Delta T a_ih^{b_{i}-1}_{i,t} h_{i,t} - \Delta T \sum_j^m a_jh^{b_{j}-1}_{j,t} h_{j,t} = h_{i,t-1} + \Delta T es_{i,t} - \Delta T inf_{i,t}
+$$
+
+
+$$
+  (1+\Delta T a_ih^{b_{i}-1}_{i,t})h_{i,t} - \Delta T \sum_j^m a_jh^{b_{j}-1}_{j,t} h_{j,t} = h_{i,t-1} + \Delta T es_{i,t} - \Delta T inf_{i,t}
+$$
+
+$$
+pro\ i=5\ a\ m\in\{7,8,9\}
+$$
+
+
+
+$$
+  (1+\Delta T a_5h^{b_{5}-1}_{5,t})h_{5,t} - \Delta T ( a_7h^{b_{7}-1}_{7,t} h_{7,t} + a_8h^{b_{8}-1}_{8,t} h_{8,t} + a_9 h^{b_{9}-1}_{9,t} h_{9,t} ) = h_{5,t-1} + \Delta T es_{5,t} - \Delta T inf_{5,t}
+$$
+
+
+
+$$
+  (1+\Delta T a_5h^{b_{5}-1}_{5,t})h_{5,t} - \Delta T a_7h^{b_{7}-1}_{7,t} h_{7,t} + \Delta T a_8h^{b_{8}-1}_{8,t} h_{8,t} + \Delta T a_9 h^{b_{9}-1}_{9,t} h_{9,t}  = h_{5,t-1} + \Delta T es_{5,t} - \Delta T inf_{5,t}
+$$
+
+
+
+\begin{equation}
+\begin{bmatrix}
+\hdots& & & & & &  \\
+\hdots  & 1+\Delta T a_5h^{b_{5}-1}_{5,t} & \hdots &  \Delta T a_7h^{b_{7}-1}_{7,t} &  \Delta T a_8h^{b_{8}-1}_{8,t} & \Delta T a_9 h^{b_{9}-1}_{9,t} & \hdots \\
+\hdots&  & & & & &  \\
+\hdots& && &  &  & \\
+\hdots& && &  &   & \\
+\hdots& && &  &   & \\
+
+\end{bmatrix} 
+% 
+\begin{bmatrix}
+ \vdots \\
+ h_{5,t} \\
+ \vdots \\
+ h_{7,t} \\
+ h_{8,t} \\
+ h_{9,t} \\
+ \vdots \\
+%  
+\end{bmatrix}
+=
+\begin{bmatrix}
+ \vdots \\
+h_{5,t-1} + \Delta T es_{5,t} - \Delta T inf_{5,t} \\
+ \vdots \\
+ \vdots \\
+ \vdots \\
+ \vdots \\
+ \vdots \\
+%  
+\end{bmatrix}
+\end{equation}
+
+
+\newpage
+\section*{rejhy}
+
+
+$$
+h_{sh} = \text{min}(h,h_{crit})
+$$
+$$
+h_{rl} = \text{max}(h-h_{crit},0)
+$$
+$$
+q_{rl} = 1/n R(h)^{2/3} i^{1/2}
+$$
+
+
+
+$$
+  \frac{h_{i,t} - h_{i,t-1} }{\Delta T} = 
+  es_{i,t} + \sum_j^n a_jh^{b_{j}}_{sh,j,t}  + \sum_k^m 1/n_k R_k(h_{rl,k,t})^{2/3} i_k^{1/2} - inf_{i,t} - a_ih^{b_{i}}_{sh,i,t} - 1/n R(h_{rl,i,t})^{2/3} i^{1/2}
+$$
+
+
+ryhy i plosny
+\begin{multline}
+  \frac{h_{i,t} - h_{i,t-1} }{\Delta T} =
+  es_{i,t} 
+  + \sum_j^n a_j \text{min}(h_{j,t},h_{crit,j})^{b_{j}}  + \sum_k^m 1/n_k R_k(\text{max}(h_{k,t}-h_{crit,k},0))^{2/3} i_k^{1/2} - \\
+  - inf_{i,t} 
+  - a_i\text{min}(h_{i,t},h_{crit,i})^{b_{i}} - 1/n R(\text{max}(h_{i,t}-h_{crit,i},0))^{2/3} i_i^{1/2}
+\end{multline}
+
+
+
+Jakoby jen pokud nastanou rejhy, jinak ta bunka resi rovnici predtim (tu jen bez ryh)
+$$
+  \frac{h_{i,t} - h_{i,t-1} }{\Delta T} =  
+  es_{i,t} 
+  + \sum_j^n a_j h^{b_{j}}_{crit,j}  + \sum_k^m 1/n_k R_k(h_{k,t}-h_{crit,k})^{2/3} i_k^{1/2} 
+  - inf_{i,t} 
+  - a_i h^{b_{i}}_{crit,i} - 1/n_i R_i(h_{i,t}-h_{crit,i})^{2/3} i_i^{1/2}
+$$
+
+
+
+$$
+  \frac{h_{i,t}}{\Delta T}
+  + 1/n_i R_i(h_{i,t}-h_{crit,i})^{2/3} i_i^{1/2}
+  - \sum_k^m 1/n_k R_k(h_{k,t}-h_{crit,k})^{2/3} i_k^{1/2} 
+  =  
+  \frac{h_{i,t-1} }{\Delta T}
+  + es_{i,t} 
+  + \sum_j^n a_j h^{b_{j}}_{crit,j}  
+  - inf_{i,t} 
+  - a_i h^{b_{i}}_{crit,i} 
+$$
+
+nasobim 1 jako $h_{i,t}/h_{i,t}$ nebo  $h_{k,t}/h_{k,t}$, dle potreby
+
+$$
+  \frac{h_{i,t}}{\Delta T}
+  + 1/n_i R_i(h_{i,t}-h_{crit,i})^{2/3} i_i^{1/2} \frac{h_{i,t}}{h_{i,t}}
+  - \sum_k^m 1/n_k R_k(h_{k,t}-h_{crit,k})^{2/3} i_k^{1/2}  \frac{h_{k,t}}{h_{k,t}}
+  =  
+  \frac{h_{i,t-1} }{\Delta T}
+  + es_{i,t} 
+  + \sum_j^n a_j h^{b_{j}}_{crit,j}  
+  - inf_{i,t} 
+  - a_i h^{b_{i}}_{crit,i} 
+$$
+
+
+
+\begin{multline}
+  \left(\frac{1}{\Delta T}
+  + 1/n_i R_i(h_{i,t}-h_{crit,i})^{2/3} i_i^{1/2} \frac{1}{h_{i,t}}\right)h_{i,t}
+  - \sum_k^m \left( 1/n_k R_k(h_{k,t}-h_{crit,k})^{2/3} i_k^{1/2}  \frac{1}{h_{k,t}}\right)h_{k,t}
+  =  \\
+  \frac{h_{i,t-1} }{\Delta T}
+  + es_{i,t} 
+  + \sum_j^n a_j h^{b_{j}}_{crit,j}  
+  - inf_{i,t} 
+  - a_i h^{b_{i}}_{crit,i} 
+\end{multline}
+
+\newpage
+\section*{vysledny set}
+
+pro 
+
+\end{document}
+
+
+
+
+
+
+
